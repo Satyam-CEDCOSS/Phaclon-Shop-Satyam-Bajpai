@@ -1,0 +1,20 @@
+<body style="background-color: #aaa;">
+<h2>Update Order</h2>
+    <form action="/order/update" method="post" class="form m-4">
+        <label for="id" class="m-2">User ID:
+            <input type="text" name="id" value=<?php echo $id ?>>
+        </label>
+        <label for="productId" class="m-2">Product ID:
+            <input type="text" name="productId" value=<?php echo $productId ?>>
+        </label>
+        <label for="orderStatus" class="m-2">Order Status:
+            <select name="orderStatus" value=<?php echo $orderStatus ?>>
+            <option value="">-Select-</option>
+            <option value="Placed">Placed</option>
+            <option value="In-process">In-process</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Denial">Denial</option>
+            </select>
+        </label>
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>

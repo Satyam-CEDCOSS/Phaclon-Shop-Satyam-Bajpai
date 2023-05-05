@@ -1,0 +1,62 @@
+<body style="background-color: #aaa;">
+    <!-- Jumbotron -->
+    <div class="p-3 text-center border-bottom">
+      <div class="container">
+        <div class="row gy-3">
+          <!-- Left elements -->
+          <div class="col-lg-2 col-sm-4 col-4">
+            <b style="font-size: 2em; margin-right: 30px;">C</b>
+          </div>
+          <!-- Left elements -->
+
+          <!-- Center elements -->
+          <div class="order-lg-last col-lg-10 col-sm-8 col-8">
+            <div class="d-flex float-end">
+              <a href="/order" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">My orders</p>
+              </a>
+              <a href="/product/crud" \ class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-heart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Products</p>
+              </a>
+              <a href="/order/crud" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Orders</p>
+              </a>
+              <a href="/user" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" \
+               id="sign_in">
+                <i class="fas fa-user-alt m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Users</p>
+              </a>
+            </div>
+          </div>
+          <!-- Center elements -->
+
+          <!-- Right elements -->
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+    <a href="/setting" class="btn btn-primary">Setting</a>
+    <h2>Order Table</h2>
+    <table class="table">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Password</th>
+                <th>User Type</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            echo $usertable
+            ?>
+        </tbody>
+    </table>
+    
+</body>

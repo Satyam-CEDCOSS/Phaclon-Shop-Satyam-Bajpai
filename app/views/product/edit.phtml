@@ -1,0 +1,24 @@
+<body style="background-color: #aaa;">
+<h2>Update Product</h2>
+    <form action="/product/update" method="post" class="form m-4">
+        <label for="name" class="m-2">Product Name:
+            <textarea name="productName" cols="20" rows="1"><?php echo $productName ?></textarea>
+        </label>
+        <label for="company" class="m-2">Company Name:
+            <input type="text" name="company" value=<?php echo $company ?>>
+        </label>
+        <label for="type" class="m-2">Product Type:
+            <input type="text" name="type" value=<?php echo $type ?>>
+        </label>
+        <label for="quantity" class="m-2">Product Quantity:
+            <input type="text" name="quantity" value=<?php echo $quantity ?>>
+        </label>
+        <label for="price" class="m-2">Product Price:
+            <input type="text" name="price" value=<?php echo $price ?>>
+        </label>
+        <label for="image" class="m-2">Product Image:
+            <input type="text" name="image" value=<?php echo $image ?>>
+        </label>
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>
+</body>

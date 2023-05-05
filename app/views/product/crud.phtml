@@ -1,0 +1,85 @@
+<body style="background-color: #aaa;">
+    <!-- Jumbotron -->
+    <div class="p-3 text-center border-bottom">
+      <div class="container">
+        <div class="row gy-3">
+          <!-- Left elements -->
+          <div class="col-lg-2 col-sm-4 col-4">
+            <b style="font-size: 2em; margin-right: 30px;">C</b>
+          </div>
+          <!-- Left elements -->
+
+          <!-- Center elements -->
+          <div class="order-lg-last col-lg-10 col-sm-8 col-8">
+            <div class="d-flex float-end">
+              <a href="/order" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">My orders</p>
+              </a>
+              <a href="/product/crud" \ class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-heart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Products</p>
+              </a>
+              <a href="/order/crud" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center">
+                <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Orders</p>
+              </a>
+              <a href="/user" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" \
+               id="sign_in">
+                <i class="fas fa-user-alt m-1 me-md-2"></i>
+                <p class="d-none d-md-block mb-0">Users</p>
+              </a>
+            </div>
+          </div>
+          <!-- Center elements -->
+
+          <!-- Right elements -->
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+    <h2>Add Product</h2>
+    <form action="/product/add" method="post" class="form m-4">
+        <label for="name" class="m-2">Product Name:
+            <input type="text" name="productName">
+        </label>
+        <label for="company" class="m-2">Company Name:
+            <input type="text" name="company">
+        </label>
+        <label for="type" class="m-2">Product Type:
+            <input type="text" name="type">
+        </label>
+        <label for="quantity" class="m-2">Product Quantity:
+            <input type="text" name="quantity">
+        </label>
+        <label for="price" class="m-2">Product Price:
+            <input type="text" name="price">
+        </label>
+        <label for="image" class="m-2">Product Image:
+            <input type="text" name="image">
+        </label>
+        <input type="submit" value="Add" class="btn btn-primary">
+    </form>
+    <h2>Product Table</h2>
+    <table class="table">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Comapny</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image URL</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            echo $prodtable;
+            ?>
+        </tbody>
+    </table>
+    
+</body>

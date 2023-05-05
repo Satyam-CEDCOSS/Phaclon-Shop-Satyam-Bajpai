@@ -1,0 +1,23 @@
+<body style="background-color: #aaa;">
+<h2>Update User</h2>
+    <form action="/order/update" method="post" class="form m-4">
+        <label for="id" class="m-2">User Name:
+            <input type="text" name="id" value=<?php echo $name ?>>
+        </label>
+        <label for="email" class="m-2">User Email:
+            <input type="text" name="email" value=<?php echo $email ?>>
+        </label>
+        <label for="password" class="m-2">User Password:
+            <input type="text" name="password" value=<?php echo $password ?>>
+        </label>
+        <label for="type" class="m-2">User Type:
+            <select name="tpe" value=<?php echo $type ?>>
+            <option value="">-Select-</option>
+            <option value="User">User</option>
+            <option value="Accountant">Accountant</option>
+            <option value="Manager">Manager</option>
+            <option value="Admin">Admin</option>
+            </select>
+        </label>
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>

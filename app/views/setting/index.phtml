@@ -1,0 +1,23 @@
+<body style="background-color: #aaa;">
+<h2>Setting</h2>
+    <form action="/setting/add" method="post" class="form m-4">
+        <label for="name" class="m-2">User Name:
+            <input type="text" name="name">
+        </label>
+        <label for="email" class="m-2">User Email:
+            <input type="text" name="email">
+        </label>
+        <label for="productId" class="m-2">User Password:
+            <input type="text" name="password">
+        </label>
+        <label for="Type" class="m-2">Type:
+            <select name="tpe" value=<?php echo $type ?>>
+                <option value="">-Select-</option>
+                <option value="User">User</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Manager">Manager</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </label>
+        <input type="submit" value="Save" class="btn btn-success">
+    </form>
