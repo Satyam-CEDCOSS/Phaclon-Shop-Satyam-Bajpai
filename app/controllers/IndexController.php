@@ -3,6 +3,7 @@
 namespace MyApp\Controllers;
 
 session_start();
+
 use Phalcon\Mvc\Controller;
 use Phalcon\Escaper;
 use Phalcon\Security\JWT\Builder;
@@ -38,8 +39,7 @@ class IndexController extends Controller
             $this->session->set('login', $user[0]->id);
             $_SESSION['token'] = $tokenObject->getToken();
             $this->response->redirect('/product');
-        }
-        else {
+        } else {
             $this->response->redirect('/index');
         }
     }

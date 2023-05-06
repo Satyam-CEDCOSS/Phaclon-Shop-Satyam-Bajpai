@@ -8,26 +8,25 @@ class ProductController extends Controller
 {
   public function indexAction()
   {
-    // $sql = 'SELECT * FROM Products';
-    // $query = $this->modelsManager->createQuery($sql);
-    // $product = $query->execute();
-    // $this->session->set('product', $product);
-    // $this->view->main = "";
-    // foreach ($product as $value) {
-    //   $this->view->main .= '<div class="col-lg-3 col-md-6 col-sm-6 d-flex">
-    //         <div class="card w-100 my-2 shadow-2-strong">
-    //           <img src=' . $value->image . ' class="card-img-top" style="aspect-ratio: 1 / 1" />
-    //           <div class="card-body d-flex flex-column">
-    //             <h5 class="card-title">' . $value->productName . '</h5>
-    //             <h5 class="card-title">' . $value->company . '</h5>
-    //             <p class="card-text">$' . $value->price . '</p>
-    //             <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-    //               <a href="order/add?pid=' . $value->productId . '" class="btn btn-primary shadow-0 me-1">Buy Now</a>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>';
-    // }
+    $sql = 'SELECT * FROM Products';
+    $query = $this->modelsManager->createQuery($sql);
+    $product = $query->execute();
+    $this->view->main = "";
+    foreach ($product as $value) {
+      $this->view->main .= '<div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+            <div class="card w-100 my-2 shadow-2-strong">
+              <img src=' . $value->image . ' class="card-img-top" style="aspect-ratio: 1 / 1" />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">' . $value->productName . '</h5>
+                <h5 class="card-title">' . $value->company . '</h5>
+                <p class="card-text">$' . $value->price . '</p>
+                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
+                  <a href="order/add?pid=' . $value->productId . '" class="btn btn-primary shadow-0 me-1">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          </div>';
+    }
   }
   public function crudAction()
   {

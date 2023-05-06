@@ -16,7 +16,7 @@ class OrderController extends Controller
         $this->view->total = 0;
         foreach ($order as $value) {
             foreach ($product as $item) {
-                if ($this->session->get('login') == $item->productId) {
+                if ($value->productId == $item->productId) {
                     $this->view->total += $item->price;
                     $this->view->order .= '<div class="card mb-4">
                     <div class="card-body p-4">
@@ -118,7 +118,6 @@ class OrderController extends Controller
         $ids = $_POST['id'];
         $productId = $_POST['productId'];
         $orderStatus = $_POST['orderStatus'];
-        // print_r($orderStatus);die;
         $id = $this->session->get('update');
         $phql = "UPDATE orders SET id = '$ids', productId = '$productId',orderStatus = '$orderStatus
         ' WHERE orders.orderId = $id ";

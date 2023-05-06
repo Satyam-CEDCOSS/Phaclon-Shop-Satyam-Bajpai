@@ -60,6 +60,7 @@ class Aclistener extends Injectable
                 '',
                 'index',
                 'crud',
+                'add',
                 'edit',
             ]
         );
@@ -79,7 +80,7 @@ class Aclistener extends Injectable
         $acl->allow('*', 'index', '*');
         $acl->allow('*', '', '*');
         $acl->allow('User', 'product', ['', 'index']);
-        $acl->allow('User', 'order', ['', 'index']);
+        $acl->allow('User', 'order', ['', 'index','add']);
         $acl->allow('Accountant', 'product', ['', 'index']);
 
         if (isset($_SESSION['token'])) {
