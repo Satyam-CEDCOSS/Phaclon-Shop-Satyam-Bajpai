@@ -1,16 +1,23 @@
 <?php
+
 namespace MyApp\Handlers;
 
+use Phalcon\Di\Injectable;
 use Phalcon\Acl\Adapter\Memory;
-use Phalcon\Events\Event;
-use Phaclon\Mvc\Dispacher;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\Application;
+use Phalcon\Events\Event;
+use Phalcon\Security\JWT\Token\Parser;
 
-class Aclistener
+session_start();
+
+class Aclistener extends Injectable
 {
-    public function beforeHandleRequest(Event $event, Application $app, Dispacher $dis)
+    public function beforeHandleRequest(Event $events, Application $app, Dispatcher $dis)
     {
+        $di = $this->getDI();
         $acl = new Memory();
+        $acl->addRole('');
         $acl->addRole('User');
         $acl->addRole('Manager');
         $acl->addRole('Accountant');
@@ -22,32 +29,41 @@ class Aclistener
                 'index',
             ]
         );
-        
+
+        $acl->addComponent(
+            '',
+            [
+                '',
+            ]
+        );
+
         $acl->addComponent(
             'signup',
             [
                 'index',
             ]
         );
-        
+
         $acl->addComponent(
             'product',
             [
+                '',
                 'index',
                 'crud',
                 'edit',
             ]
         );
-        
+
         $acl->addComponent(
             'order',
             [
+                '',
                 'index',
                 'crud',
                 'edit',
             ]
         );
-        
+
         $acl->addComponent(
             'user',
             [
@@ -55,17 +71,32 @@ class Aclistener
                 'edit',
             ]
         );
-        
-        $acl->allow('admin', '*', '*');
-        $acl->allow('Manager', '*', '*');
-        $acl->allow('Accountant', '*', '*');
-        $acl->allow('user', 'signup', '*');
+
+        $acl->allow('Admin', '*', '*');
+        $acl->allow('Manager', 'product', '*');
+        $acl->allow('Accountant', 'order', '*');
+        $acl->allow('User', 'signup', '*');
         $acl->allow('*', 'index', '*');
-        $acl->allow('user', 'product', 'index');
-        $acl->allow('user', 'order', 'index');
+        $acl->allow('*', '', '*');
+        $acl->allow('User', 'product', ['', 'index']);
+        $acl->allow('User', 'order', ['', 'index']);
+        $acl->allow('Accountant', 'product', ['', 'index']);
 
-        $acl->deny('Accountant', 'product', '*');
-        $acl->deny('Manager', 'order', '*');
-
+        if (isset($_SESSION['token'])) {
+            $parser = new Parser();
+            $tokenObject = $parser->parse($_SESSION['token']);
+            echo "<pre>";
+            $role = $tokenObject->getClaims()->getPayload()['sub'];
+        } else {
+            $role = "";
+        }
+        $controle = $dis->getControllerName();
+        $action = $dis->getActionName();
+        print_r($role . " ");
+        $check = $acl->isAllowed($role, $controle, $action);
+        if (!$check) {
+            echo "Access Denied";
+            die;
+        }
     }
 }

@@ -16,7 +16,7 @@ class OrderController extends Controller
         $this->view->total = 0;
         foreach ($order as $value) {
             foreach ($product as $item) {
-                if ($value->productId == $item->productId) {
+                if ($this->session->get('login') == $item->productId) {
                     $this->view->total += $item->price;
                     $this->view->order .= '<div class="card mb-4">
                     <div class="card-body p-4">
